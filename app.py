@@ -60,6 +60,8 @@ print("XTTS downloaded")
 config = XttsConfig()
 config.load_json(os.path.join(model_path, "config.json"))
 
+torch.serialization.add_safe_globals([XttsConfig])
+
 model = Xtts.init_from_config(config)
 model.load_checkpoint(
     config,
